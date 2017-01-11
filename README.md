@@ -1,2 +1,2 @@
 REACT WEB STUDY
-	react start 
+	react start .

@@ -9,11 +9,11 @@ class PostContainer extends Component {
         super();
         // initializes component state
         this.state = {
-            postId: 1,
+            boardId: 1,
             fetching: false, // tells whether the request is waiting for response or not
             post: {
                 title: null,
-                body: null
+                content: null
             },
             comments: [],
             warningVisibility: false
@@ -41,7 +41,7 @@ class PostContainer extends Component {
     }
 
 
-    fetchPostInfo = async (postId) => {
+    fetchPostInfo = async (boardId) => {
         this.setState({
             fetching: true // requesting..
         });
@@ -49,21 +49,21 @@ class PostContainer extends Component {
         try {
             // wait for two promises
             const info = await Promise.all([
-                service.getPost(postId),
-                service.getComments(postId)
+                service.getPost(boardId),
+                service.getComments(boardId)
             ]);
 
             // Object destructuring Syntax,
             // takes out required values and create references to them
-            const {title, body} = info[0].data;
+            const {title, content} = info[0].data;
 
             const comments = info[1].data;
 
             this.setState({
-                postId,
+                boardId,
                 post: {
                     title,
-                    body
+                    content
                 },
                 comments,
                 fetching: false // done!
@@ -80,29 +80,29 @@ class PostContainer extends Component {
 
 
     handleNavigateClick = (type) => {
-        const postId = this.state.postId;
+        const boardId = this.state.boardId;
 
         if(type === 'NEXT') {
-            this.fetchPostInfo(postId+1);
+            this.fetchPostInfo(boardId+1);
         } else {
-            this.fetchPostInfo(postId-1);
+            this.fetchPostInfo(boardId-1);
         }
     }
 
     render() {
-        const {postId, fetching, post, comments, warningVisibility} = this.state;
+        const {boardId, fetching, post, comments, warningVisibility} = this.state;
 
         return (
             <PostWrapper>
                 <Navigate
-                    postId={postId}
+                    boardId={boardId}
                     disabled={fetching}
                     onClick={this.handleNavigateClick}
                 />
                 <Post
-                    postId={postId}
+                    boardId={boardId}
                     title={post.title}
-                    body={post.body}
+                    content={post.content}
                     comments={comments}
                 />
                 <Warning visible={warningVisibility} message="That post does not exist"/>

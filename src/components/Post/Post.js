@@ -8,7 +8,7 @@ class Post extends Component {
         this.state = {
             postInfo: {
                 title: null,
-                body: null,
+                content: null,
                 comments: []
             },
             animate: false,
@@ -19,7 +19,7 @@ class Post extends Component {
 
     componentWillReceiveProps (nextProps) {
 
-        const { title, body, comments } = nextProps;
+        const { title, content, comments } = nextProps;
 
         if(this.props.postId !== nextProps.postId) {
             // identify the animation direction
@@ -35,7 +35,7 @@ class Post extends Component {
                 () => {
                     this.setState({
                         postInfo: {
-                            title, body, comments
+                            title, content, comments
                         },
                         animate: false
                     })
@@ -47,13 +47,13 @@ class Post extends Component {
         // sync the props to state directly (this is the first post)
         this.setState({
             postInfo: {
-                title, body, comments
+                title, content, comments
             }
         })
     }
 
     render() {
-        const { title, body, comments } = this.state.postInfo;
+        const { title, content, comments } = this.state.postInfo;
 
         const { animate, direction } = this.state;
 
@@ -68,7 +68,7 @@ class Post extends Component {
             <div className={`Post animated ${animation}`}>
                 <h1>{title}</h1>
                 <p>
-                    {body}
+                    {content}
                 </p>
                 <CommentList comments={comments}/>
             </div>

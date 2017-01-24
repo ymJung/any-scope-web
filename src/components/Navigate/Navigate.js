@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from 'semantic-ui-react';
 import './Navigate.css'
 
-const Navigate = ({onClick, postId, disabled}) => (
+const Navigate = ({onClick, boardId, disabled}) => (
     <div className="Navigate">
         <Button
             color="teal"
@@ -15,7 +15,7 @@ const Navigate = ({onClick, postId, disabled}) => (
             disabled={disabled}
         />
         <div className="Navigate-page-num">
-            {postId}
+            {boardId}
         </div>
         <Button
             color="teal"

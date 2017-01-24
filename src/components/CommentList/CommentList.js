@@ -10,7 +10,7 @@ const CommentList = ({comments}) => {
         (comment, index)=>(
             <Comment
                 name={comment.displayName}
-                body={comment.body}
+                content={comment.content}
                 key={index}
             />
         )

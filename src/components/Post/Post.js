@@ -21,9 +21,9 @@ class Post extends Component {
 
         const { title, content, comments } = nextProps;
 
-        if(this.props.postId !== nextProps.postId) {
+        if(this.props.boardId !== nextProps.boardId) {
             // identify the animation direction
-            const direction = this.props.postId < nextProps.postId ? 'left' : 'right';
+            const direction = this.props.boardId < nextProps.boardId ? 'left' : 'right';
 
             this.setState({
                 direction,

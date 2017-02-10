@@ -105,7 +105,7 @@ class PostContainer extends Component {
                     content={post.content}
                     comments={comments}
                 />
-                <Warning visible={warningVisibility} message="That post does not exist"/>
+                <Warning visible={warningVisibility} message="That post does not exist."/>
             </PostWrapper>
         );
     }

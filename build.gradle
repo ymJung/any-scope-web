@@ -32,6 +32,9 @@ dependencies {
 
 	// cache
 	implementation 'com.google.guava:guava:31.1-jre'
+
+
+	implementation 'com.simiacryptus:tf-gpt-2:1.7.1'
 }
 
 tasks.named('test') {
